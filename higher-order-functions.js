@@ -14,5 +14,7 @@ function copyArrayAndManipulate(array, instructions) {
 //These are the callback functions that can be passed in to the higher order function to change how the array is manipulated
 function multiplyBy2(input) { return input * 2; }
 function divideBy2(input) { return input / 2; }
+function add2(input) { return input + 2; }
+function subtract2(input) { return input - 2; }
 
 const result = copyArrayAndManipulate([1, 2, 3], multiplyBy2);
