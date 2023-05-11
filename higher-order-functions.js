@@ -1,5 +1,7 @@
 // Higher Order Functions Example:
 
+// Our copyArrayAndManipulate is a long form way of creating the .map() function
+
 // This is the higher order function:
 function copyArrayAndManipulate(array, instructions) {
     const output = [];
