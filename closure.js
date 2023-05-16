@@ -52,5 +52,5 @@ function outer2() {
 }
 
 const myNewFunction = outer2();
-myNewFunction();
-myNewFunction();
+myNewFunction(); // increments counter2 that was stored in the "backpack" attached to the function definition attached to myNewFunction // counter = 1
+myNewFunction(); // data stored in the "backpack" persists, so running this funciton again, results in counter = 2
