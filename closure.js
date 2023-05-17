@@ -54,3 +54,13 @@ function outer2() {
 const myNewFunction = outer2();
 myNewFunction(); // increments counter2 that was stored in the "backpack" attached to the function definition attached to myNewFunction // counter = 1
 myNewFunction(); // data stored in the "backpack" persists, so running this funciton again, results in counter = 2
+
+// anotherFunction and myNewFunction share a backpack because they are both referring to the same code in memory
+const anotherFunction = myNewFunction;
+anotherFunction(); // increases counter to 3
+anotherFunction(); // increases counter to 4
+
+// thirdFucntion gets a new backpack becasue it was created in a separate execution context from myNewFunction
+const thirdFunction = outer2();
+thirdFunction(); // counter increases to 1
+thirdFunction(); // counter increases to 2
