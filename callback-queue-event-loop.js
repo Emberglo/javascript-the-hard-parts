@@ -21,3 +21,5 @@ console.log("Me First!");
 // then printHello is run and Hello is logged to the console
 
 // printHello can't ever run until all of the synchronous code has finished running, no matter how much there is - this is checked by the event loop
+
+// if printHello was being used to get data from an API call, the data is inserted automatically as an arguement when the function is added to the call stack
