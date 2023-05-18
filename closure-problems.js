@@ -1,6 +1,7 @@
 // CHALLENGE 1
 function createFunction() {
-
+    // return function() { console.log("hello"); };
+    return () => console.log("hello");
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -10,7 +11,7 @@ function createFunction() {
 
 // CHALLENGE 2
 function createFunctionPrinter(input) {
-
+    return () => console.log(input);
 }
 
 // /*** Uncomment these to check your work! ***/
