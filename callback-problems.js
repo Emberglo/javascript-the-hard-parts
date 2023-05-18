@@ -1,6 +1,5 @@
 // Link to solve problems: http://csbin.io/callbacks
 // Link so solutions: https://github.com/FrontendMasters/fm-snippets/blob/main/javascript-hard-parts-v2/README.md
-// This is the callbacks problem set
 // Type JavaScript here and click "Run Code" or press Ctrl + s
 console.log('Hello, world!');
 
