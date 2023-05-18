@@ -20,4 +20,4 @@ console.log("Me First!");
 // after the console.log("Me First!") runs, printHello is taken from the Callback Queue and added to the Call Stack
 // then printHello is run and Hello is logged to the console
 
-// printHello can't ever run until all of the synchronous code has finished running, no matter how much there is.
+// printHello can't ever run until all of the synchronous code has finished running, no matter how much there is - this is checked by the event loop
