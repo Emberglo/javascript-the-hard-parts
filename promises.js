@@ -13,3 +13,39 @@ futureData.then(display);
 console.log("Me First!")
 
 // after the Me First and after the data returns from the fetch, display runs and prints out the response data
+
+
+
+// ---------
+
+
+
+// example to show how our promise-deferred functionality gets back onto the call stack to be run
+
+function display2 (data) {console.log(data)};
+
+function printHello() {console.log("Hello")};
+
+function blockFor300MS() {} // fictional function that blocks js thread for 300ms
+
+// starts a timer of 0ms and adds printHello to the callback/task queue
+setTimeout(printHello, 0);
+
+// creates a promise object and starts the network request for the url
+const futureData2 = fetch('https://jsonplaceholder.typicode.com/todos/1');
+
+// adds display2 to the micro task queue to be run as soon as the callstack is empty and the global code is done
+futureData2.then(display2);
+
+// opens a new execution context and interupts the JS thread for 300ms
+blockFor300MS();
+
+// logs Me First after the thread has been blocked for 300ms
+console.log("Me First!");
+
+// Console:
+// 302ms - "Me First!"
+// 303ms - data from repsonse
+// 304ms - "Hello"
+
+// data is logged before Hello because fetch adds display2 to the  micro task queue and that queue is executed before the callback/task queue where printHello was added
