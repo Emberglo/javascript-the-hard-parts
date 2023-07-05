@@ -49,3 +49,11 @@ console.log("Me First!");
 // 304ms - "Hello"
 
 // data is logged before Hello because fetch adds display2 to the  micro task queue and that queue is executed before the callback/task queue where printHello was added
+
+
+// promise error handling
+
+// to add a fucntion to the promise objects onRejection array, you use .catch(func)
+// these functions will be run automatically if the promise gets an error back from its network request
+
+// you can also pass two arguements to .then(onFulfilledFunction, onRejectionFunction)
