@@ -123,4 +123,66 @@ const user8 = userCreator2("Will", 3);
 const user9 = userCreator2("Tim", 5);
 user8.increment();
 
+// DON'T use arrow functions for defining methods on an object - you can use arrow functions inside the method for smaller functions
+
+
+// the NEW keyword automates a lot of our manual work
+function userCreator3(name, score) {
+
+    // no need to create the new object
+
+    // this keyword replaces newUser
+    this.name = name;
+    this.score = score;
+
+    // no need to return out the object
+};
+
+// replaces userFunctionStore
+userCreator3.prototype
+
+userCreator3.prototype.increment = function() {
+    this.score++;
+};
+
+const user10 = new userCreator3("Will", 3);
+
+
+// INTERLUDE - functions are both objects and functions
+function multiplyBy2(num) {
+    return num*2;
+};
+
+multiplyBy2.stored = 5;
+
+multiplyBy2(3) // = 6
+
+multiplyBy2.stored // = 5
+
+multiplyBy2.prototype // = {}
+
+// we could use the fact that all functions have a default property 'prototype' on their object version (itself an object) to replace our 'userFunctionStore' object
+
+// when we create a funcion in memory, an object is also created that is attached
+// you can access this object using dot notation with the funtion/object name 
+// storing things to the object does not interfere with running the funciton code
+// function objects have a prototype property that defaults to an empty object - this replaces the 'userFunctionStore' from earlier
+
+
+
+// NEW keyword automates a lot of our manual work
+
+function userCreator4(name, score) {
+    this.name = name;
+    this.score = score;
+};
+
+userCreator4.prototype.increment = function() { this.score++; };
+userCreator4.prototype.login = function() { console.log("Logged In"); };
+
+const user11 = new userCreator4("Eva", 9);
+
+user11.increment();
+
+// Eva's score is now 10
 
