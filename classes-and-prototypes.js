@@ -59,6 +59,7 @@ user4.increment();
 // make the link with Object.create() technique
 
 function userCreator2 (name, score) {
+    // anything passed into Object.create is saved in the __proto__
     const newUser = Object.create(userFunctionStore);
     newUser.name = name;
     newUser.score = score;
@@ -67,7 +68,10 @@ function userCreator2 (name, score) {
 };
 
 // by using Object.create we are creating a link between the created newUser object and the userFunctionStore object
+// this link is a hidden property in the newUser object stored as __proto__  with the value being a link to userFunctionStore
+// when JS doesn't find a property on an object, it finds the __proto__ property and follows it up to the linked object to look for the property there
 const userFunctionStore = {
+    // increment and login are METHODS
     increment: () => { this.score++; },
     login: () => { console.log("Logged In"); }
 };
@@ -76,6 +80,38 @@ const user6 = userCreator2("Will", 3);
 const user7 = userCreator2("Tim", 5);
 user6.increment();
 
+// when we get the code for the increment function and run it, a property called this is automatically created in the functions local memory
+// the this property is automatically assigned the value of whatever is on the left side of the dot, so in this case it's assigned the user1 object
+// so, this.score++ translates to user1.score++
+
 // Solution 2 is the core of a useable and practical solution, solutions 3 & 4 will be shortened versions of doing the same thing
 
+
+// Decaring and calling a new function inside our method increment
+// create and invoke a new function (add1) inside increment
+
+function userCreator2 (name, score) {
+    // anything passed into Object.create is saved in the __proto__
+    const newUser = Object.create(userFunctionStore);
+    newUser.name = name;
+    newUser.score = score;
+
+    return newUser;
+};
+
+const userFunctionStore2 = {
+    increment: function () {
+        // used to have to do let that = this
+        // then inside add1 you would do that.score++ to access the increment function's value of this
+
+        // modern way
+        function add1 () { this.score++; };
+        // passes the value of the increment function's this to overrides the add functions default value of this.
+        add1.call(this);
+    }
+};
+
+const user8 = userCreator2("Will", 3);
+const user9 = userCreator2("Tim", 5);
+user8.increment();
 
