@@ -103,15 +103,24 @@ const userFunctionStore2 = {
     increment: function () {
         // used to have to do let that = this
         // then inside add1 you would do that.score++ to access the increment function's value of this
+        // let that = this;
+        // function add1 () { that.score++; };
 
-        // modern way
-        function add1 () { this.score++; };
+        // more modern way
+        // function add1 () { this.score++; };
         // passes the value of the increment function's this to overrides the add functions default value of this.
-        add1.call(this);
+        // add1.call(this);
+
+        // most modern way - using an arrow function
+        // arrow function's this value is scoped to where the function is saved so it has the same value as the increment function
+        // declaring the function any other way would cause the this value to default to the global window
+        const add1 = () => { this.score++; }
+        add1();
     }
 };
 
 const user8 = userCreator2("Will", 3);
 const user9 = userCreator2("Tim", 5);
 user8.increment();
+
 
