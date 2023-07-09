@@ -170,7 +170,7 @@ multiplyBy2.prototype // = {}
 
 
 
-// NEW keyword automates a lot of our manual work
+// Solution 3 - NEW keyword automates a lot of our manual work
 
 function userCreator4(name, score) {
     this.name = name;
@@ -186,3 +186,29 @@ user11.increment();
 
 // Eva's score is now 10
 
+
+// when a function needs a new keyword the first letter should be capitalized, so userCreator should be UserCreator
+// then devs will know that you need to use new UserCreator to run it
+// solution 4 is Class syntactic sugar - it works exactly like solution 3 but has different syntax to prevent confusion
+
+
+// Solution 4 - class syntactic sugar
+
+// we're writing out methods separately from our object 'constructor' itself (off in the UserConstructor.prototype object)
+// ES2015/ES6 and other languages let us do it all in one place
+
+class UserCreator {
+    // replaces the function userCreator4
+    constructor (name, score) {
+        this.name = name;
+        this.score = score;
+    }
+
+    // replaces the userCreator4.prototype function delcarations
+    increment() { this.score==; };
+    login() { console.log("Logged In"); };
+};
+
+const user12 = new UserCreator("Sarah", 19);
+
+user12.increment(); // Sarah's score increases to 20
